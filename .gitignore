@@ -1,0 +1,8 @@
+*.dll
+*.exe
+*.zip
+.idea
+app
+cmake-build-debug
+include
+lib
