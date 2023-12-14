@@ -505,11 +505,41 @@ void renderDots() {
 
 }
 
+const int gridWidth = 30, gridHeight = 30;
+
+void renderBackground() {
+
+    setColor(lightGray);
+
+    for(int i = 1; i < gridWidth; i++) {
+        double step = width * 1.0 / gridWidth;
+        SDL_RenderDrawLineF(renderer,
+                            (i * step) / scale,
+                            (0) / scale,
+                            (i * step) / scale,
+                            (width) / scale
+        );
+    }
+
+    for(int i = 1; i < gridHeight; i++) {
+        double step = height * 1.0 / gridHeight;
+        SDL_RenderDrawLineF(renderer,
+                            (0) / scale,
+                            (i * step) / scale,
+                            (width) / scale,
+                            (i * step) / scale
+        );
+    }
+
+}
+
 void render() {
 
     setScale(1);
     setColor(white);
     SDL_RenderClear(renderer);
+
+    renderBackground();
 
     if(dots.size()) {
         renderLines();
