@@ -73,6 +73,7 @@ const double distToScreen = 3;
 const double distToOrigin = 6;
 
 double boost = 250;
+const double initBoost = boost;
 
 Pos2d toScreen(Pos3d pos) {
     return {

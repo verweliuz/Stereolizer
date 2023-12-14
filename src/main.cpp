@@ -470,7 +470,8 @@ void renderLines() {
 
 }
 
-void renderCircle(int x, int y, int radius) {
+void renderCircle(int x, int y, double radius) {
+    // radius *= boost / initBoost;
     for(int w = 0; w < radius * 2; w++) {
         for(int h = 0; h < radius * 2; h++) {
             int dx = radius - w;
@@ -485,13 +486,15 @@ void renderCircle(int x, int y, int radius) {
     }
 }
 
+const double dotSize = 20;
+
 void renderDot(char id) {
 
     Dot dot = dots[id];
     Pos2d onScreen = toScreen(dot.pos);
 
     setColor((id == movingDot || id == findTarget()) ? red : black);
-    renderCircle(onScreen.x, onScreen.y, 4.3);
+    renderCircle(onScreen.x, onScreen.y, dotSize / (dot.pos.z + distToOrigin));
 
     setColor(black);
 
